@@ -17,7 +17,8 @@ if %i%==1 set KMS_Sev=kms7.MSGuides.com
 if %i%==2 set KMS_Sev=kms8.MSGuides.com
 if %i%==3 set KMS_Sev=kms9.MSGuides.com
 if %i%==4 goto notsupported
-cscript //nologo ospp.vbs /sethst:%KMS_Sev% >nul&echo ****************************************************************************&echo.&choice /n /c YN /m "Done. Wanna see my project on Github [y/n]?" & if errorlevel 2 exit) || (echo The connection to my KMS server failed! Trying to connect to another one... & echo Please wait... & echo. & echo. & set /a i+=1 & goto server)
+cscript //nologo ospp.vbs /sethst:%KMS_Sev% >nul&echo ****************************************************************************&echo.
+cscript //nologo ospp.vbs /act | find /i "successful" && (echo.&echo ****************************************************************************&echo.&choice /n /c YN /m "Done. Wanna see my project on Github [y/n]?" & if errorlevel 2 exit) || (echo The connection to my KMS server failed! Trying to connect to another one... & echo Please wait... & echo. & echo. & set /a i+=1 & goto server)
 explorer "https://github.com/hoanguyenthai263"&goto halt
 :notsupported
 echo.&echo ***************************************************************************=&echo Sorry! Your version is not supported.&echo Please try installing the latest version!
